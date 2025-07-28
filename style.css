@@ -1,0 +1,271 @@
+/*
+ * Global styles for the personal website of Shubham Shastri
+ *
+ * This stylesheet defines two colour schemes (light and dark) and
+ * uses CSS custom properties to enable easy theme switching via
+ * JavaScript. Neutral colours provide a professional, modern look
+ * while still allowing room for subtle accents. The dark mode
+ * palette has been tuned for readability and contrast on low‑light
+ * displays. A simple transition on colours smooths the switch
+ * between themes.
+ */
+
+/* Colour variables for the light theme. These values live on the
+   root element and are used throughout the site. */
+:root {
+  --bg-color: #f5f5f5;
+  --text-color: #1a1a1a;
+  --primary-color: #0055aa;
+  --secondary-color: #007acc;
+  --card-bg: #ffffff;
+  --nav-bg: #ffffff;
+  --nav-text: #1a1a1a;
+  --footer-bg: #f0f0f0;
+  --footer-text: #555;
+}
+
+/* Override variables for dark mode. When the `.dark` class is
+   applied to the body element these values take effect. */
+body.dark {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --primary-color: #90caf9;
+  --secondary-color: #64b5f6;
+  --card-bg: #1f1f1f;
+  --nav-bg: #1f1f1f;
+  --nav-text: #e0e0e0;
+  --footer-bg: #181818;
+  --footer-text: #aaa;
+}
+
+/* Global resets and base typography */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+/* Navigation bar styles */
+nav {
+  background-color: var(--nav-bg);
+  color: var(--nav-text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav .logo {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav ul li a {
+  color: var(--nav-text);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: var(--primary-color);
+}
+
+/* Dark mode toggle switch */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--nav-text);
+}
+
+.theme-toggle i {
+  pointer-events: none;
+}
+
+/* Hero section styles */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.hero .overlay h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero .overlay p {
+  font-size: 1.1rem;
+  max-width: 700px;
+}
+
+/* Content sections */
+main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+/* Card grid for home page */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card i {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+  color: var(--text-color);
+}
+
+/* Lists on internal pages */
+.content-section ul {
+  margin-left: 1.25rem;
+}
+
+.content-section li {
+  margin-bottom: 0.5rem;
+}
+
+.content-section .subheading {
+  font-weight: bold;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* Buttons and link lists */
+.link-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.link-list a {
+  display: block;
+  padding: 0.75rem 1rem;
+  background-color: var(--card-bg);
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s ease;
+}
+
+.link-list a:hover {
+  background-color: var(--footer-bg);
+}
+
+/* Footer styles */
+footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+}
+
+/* Responsive typography */
+@media (max-width: 600px) {
+  .hero .overlay h1 {
+    font-size: 2rem;
+  }
+  .hero .overlay p {
+    font-size: 1rem;
+  }
+  nav ul {
+    gap: 1rem;
+  }
+}
